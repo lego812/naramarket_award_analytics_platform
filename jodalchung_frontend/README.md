@@ -1,37 +1,60 @@
-# jodalchung_frontend
+# Jodalchung Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+입찰 낙찰 검색/분석을 위한 Vue 3 + Vite 프론트엔드입니다. 백엔드 API로
+낙찰 기록을 조회하고 필터링, 페이지네이션, 업체별 요약을 제공합니다.
 
-## Recommended IDE Setup
+## 주요 기능
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- 조회 기간/수요기관/키워드 필터
+- 서버 조회 + 클라이언트 필터링/페이지네이션
+- 업체별 낙찰 건수 및 주요 수요기관 TOP3 요약
 
-## Recommended Browser Setup
+## 요구 사항
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Node.js 18+
+- 백엔드: `http://localhost:8080`
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## 실행 방법
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+브라우저에서 `http://localhost:5173` 접속.
+
+## API 호출
+
+프론트는 다음 형태로 GET 요청을 보냅니다:
+
+```
+GET /award/results/range?inqryBgnDt=YYYYMMDD0000&inqryEndDt=YYYYMMDD2359&dminsttNm=...&bidNtceNm=...
+```
+
+응답 예시:
+
+```
+{
+  "resultCode": "00",
+  "resultMsg": "OK",
+  "numOfRows": 0,
+  "pageNo": 1,
+  "totalCount": 0,
+  "items": [ ... ]
+}
+```
+
+## 프록시 설정
+
+CORS 회피를 위해 Vite 프록시를 사용합니다:
+
+```
+/award -> http://localhost:8080
+```
+
+자세한 설정은 `vite.config.js`에서 확인하세요.
+
+## 빌드
 
 ```sh
 npm run build
