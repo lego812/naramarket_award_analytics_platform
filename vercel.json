@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/award/:path*",
+      "destination": "https://api.bidinsight.kro.kr/award/:path*"
+    }
+  ]
+}
