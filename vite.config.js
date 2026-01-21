@@ -18,7 +18,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/award': {
-        target: 'http://localhost:8080',
+        target: 'https://api.bidinsight.kro.kr',
         changeOrigin: true,
       },
       '/api': {

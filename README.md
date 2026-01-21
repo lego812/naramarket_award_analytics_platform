@@ -12,7 +12,7 @@
 ## 요구 사항
 
 - Node.js 18+
-- 백엔드: `http://localhost:8080`
+- 백엔드: `https://api.bidinsight.kro.kr`
 
 ## 실행 방법
 
@@ -49,7 +49,7 @@ GET /award/results/range?inqryBgnDt=YYYYMMDD0000&inqryEndDt=YYYYMMDD2359&dminstt
 CORS 회피를 위해 Vite 프록시를 사용합니다:
 
 ```
-/award -> http://localhost:8080
+/award -> https://api.bidinsight.kro.kr
 ```
 
 자세한 설정은 `vite.config.js`에서 확인하세요.
