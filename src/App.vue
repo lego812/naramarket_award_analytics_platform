@@ -1,7 +1,10 @@
 <script setup>
 import { computed, reactive, ref, watch } from 'vue';
 
-const endpoint = '/award/results/range';
+const apiBase = import.meta.env.VITE_API_BASE || '';
+const endpoint = apiBase
+  ? `${apiBase.replace(/\/$/, '')}/award/results/range`
+  : '/award/results/range';
 
 const filters = reactive({
   startDate: '2025-01-20',
